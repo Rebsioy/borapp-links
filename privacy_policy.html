@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Política de Privacidad — BTS ARMY Quiz</title>
+<style>
+  :root {
+    --bg: #06040C;
+    --bg2: #0F0A1E;
+    --card: #150E28;
+    --accent: #D946EF;
+    --accent2: #9333EA;
+    --text: #F1E9FF;
+    --muted: #8B7FA8;
+    --border: rgba(217,70,239,0.15);
+    --gold: #FBBF24;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+  .hero {
+    background: linear-gradient(135deg, #1A0840 0%, #06040C 60%);
+    border-bottom: 1px solid var(--border);
+    padding: 60px 24px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(217,70,239,0.12) 0%, transparent 70%);
+    top: -100px; left: 50%; transform: translateX(-50%);
+    pointer-events: none;
+  }
+  .emoji { font-size: 48px; display: block; margin-bottom: 16px; }
+  h1 {
+    font-size: clamp(24px, 5vw, 36px);
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, var(--accent), #F9A8D4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 10px;
+  }
+  .subtitle {
+    color: var(--muted);
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+  .updated {
+    display: inline-block;
+    margin-top: 14px;
+    background: rgba(217,70,239,0.1);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 12px;
+    color: var(--accent);
+  }
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+  .toc {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 48px;
+  }
+  .toc h2 {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent);
+    margin-bottom: 14px;
+    font-weight: 700;
+  }
+  .toc ol {
+    padding-left: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 24px;
+  }
+  .toc li a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.2s;
+  }
+  .toc li a:hover { color: var(--accent); }
+  @media (max-width: 500px) { .toc ol { grid-template-columns: 1fr; } }
+  section {
+    margin-bottom: 48px;
+    scroll-margin-top: 24px;
+  }
+  h2 {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  h2 .num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px; height: 28px;
+    background: linear-gradient(135deg, var(--accent2), var(--accent));
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 900;
+    color: white;
+    flex-shrink: 0;
+  }
+  p { color: #C4B5D8; margin-bottom: 12px; }
+  ul, ol { padding-left: 22px; margin-bottom: 12px; }
+  li { color: #C4B5D8; margin-bottom: 6px; }
+  strong { color: var(--text); font-weight: 700; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+  .card-title {
+    font-weight: 700;
+    color: var(--text);
+    font-size: 14px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .badge-optional { background: rgba(251,191,36,0.1); color: var(--gold); border: 1px solid rgba(251,191,36,0.2); }
+  .badge-required { background: rgba(217,70,239,0.1); color: var(--accent); border: 1px solid var(--border); }
+  .badge-local { background: rgba(16,185,129,0.1); color: #10B981; border: 1px solid rgba(16,185,129,0.2); }
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 48px 0;
+  }
+  .contact-box {
+    background: linear-gradient(135deg, rgba(217,70,239,0.08), rgba(147,51,234,0.05));
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    text-align: center;
+  }
+  .contact-box a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .contact-box a:hover { text-decoration: underline; }
+  .lang-note {
+    background: rgba(251,191,36,0.06);
+    border: 1px solid rgba(251,191,36,0.15);
+    border-radius: 12px;
+    padding: 14px 18px;
+    font-size: 13px;
+    color: var(--gold);
+    margin-bottom: 32px;
+    text-align: center;
+  }
+  footer {
+    text-align: center;
+    padding: 32px 24px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 12px;
+  }
+  footer span { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <span class="emoji">💜</span>
+  <h1>Política de Privacidad</h1>
+  <p class="subtitle">BTS ARMY Quiz — boraapp</p>
+  <span class="updated">Última actualización: Abril 2026</span>
+</div>
+
+<div class="container">
+  <div class="lang-note">
+    🌐 This document is also available in English below / Este documento también está disponible en inglés más abajo.
+  </div>
+
+  <div class="toc">
+    <h2>Contenido</h2>
+    <ol>
+      <li><a href="#datos">Datos que recopilamos</a></li>
+      <li><a href="#uso">Cómo usamos los datos</a></li>
+      <li><a href="#terceros">Terceros y servicios</a></li>
+      <li><a href="#almacenamiento">Almacenamiento y seguridad</a></li>
+      <li><a href="#menores">Menores de edad</a></li>
+      <li><a href="#derechos">Tus derechos</a></li>
+      <li><a href="#anuncios">Anuncios</a></li>
+      <li><a href="#cambios">Cambios a esta política</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ol>
+  </div>
+
+  <p>En <strong>boraapp</strong> ("nosotros", "nuestro") nos tomamos tu privacidad muy en serio. Esta política describe qué datos recopilamos, cómo los usamos y cuáles son tus derechos cuando usas la aplicación <strong>BTS ARMY Quiz</strong>.</p>
+
+  <!-- 1 -->
+  <section id="datos">
+    <h2><span class="num">1</span> Datos que recopilamos</h2>
+
+    <div class="card">
+      <div class="card-title">🗂️ Datos de juego — almacenados localmente <span class="badge badge-local">Solo en tu dispositivo</span></div>
+      <p style="margin:0; font-size:14px;">Tu progreso de juego se guarda únicamente en tu dispositivo usando almacenamiento local (GetStorage). Esto incluye: XP, niveles completados, racha de días, logros, cartas desbloqueadas y estadísticas de partidas. <strong>No enviamos este progreso a ningún servidor a menos que inicies sesión.</strong></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">👤 Datos de perfil social — opcionales <span class="badge badge-optional">Opcional</span></div>
+      <p style="margin:0; font-size:14px;">Si decides conectar tu cuenta de Google o Apple para aparecer en el ranking global, recopilamos: nombre o alias, dirección de correo electrónico, foto de perfil (solo Google), identificador único del proveedor de autenticación, y el país que tú seleccionas manualmente. <strong>El login es completamente opcional.</strong> La app funciona al 100% sin él.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🎟️ Código de referido <span class="badge badge-local">Solo en tu dispositivo</span></div>
+      <p style="margin:0; font-size:14px;">Generamos un código de referido aleatorio y único para cada instalación. Este código se usa para el sistema de eventos y sorteos. Se almacena localmente y, si participas en un evento, se asocia a tu perfil en la base de datos.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📊 Datos de uso y rendimiento <span class="badge badge-required">Automático</span></div>
+      <p style="margin:0; font-size:14px;">Google AdMob, el proveedor de anuncios que usamos, puede recopilar datos de uso e identificadores de publicidad de acuerdo con su propia política de privacidad. Si adquieres la suscripción sin anuncios, se desactiva la carga de anuncios por completo.</p>
+    </div>
+
+    <p><strong>No recopilamos:</strong> ubicación GPS, lista de contactos, historial de llamadas, micrófono ni cámara.</p>
+  </section>
+
+  <!-- 2 -->
+  <section id="uso">
+    <h2><span class="num">2</span> Cómo usamos los datos</h2>
+    <ul>
+      <li>Guardar y sincronizar tu progreso de juego entre sesiones.</li>
+      <li>Mostrar tu nombre, foto y puntuación en el ranking global (solo si iniciaste sesión).</li>
+      <li>Gestionar el sistema de eventos, sorteos y tickets de referidos.</li>
+      <li>Enviarte notificaciones locales de recordatorio (gestionadas completamente en tu dispositivo, sin servidores externos).</li>
+      <li>Mostrar anuncios relevantes a través de Google AdMob (si no tienes la suscripción).</li>
+      <li>Mejorar la app mediante estadísticas de uso anónimas.</li>
+    </ul>
+    <p><strong>No vendemos tus datos a terceros.</strong> No los usamos para perfilado publicitario propio ni para tomar decisiones automatizadas que te afecten.</p>
+  </section>
+
+  <!-- 3 -->
+  <section id="terceros">
+    <h2><span class="num">3</span> Terceros y servicios</h2>
+    <p>La app usa los siguientes servicios de terceros. Cada uno tiene su propia política de privacidad:</p>
+
+    <div class="card">
+      <div class="card-title">🗄️ Supabase (base de datos)</div>
+      <p style="margin:0;font-size:14px;">Almacenamos el ranking global, perfiles de usuarios (opcionales) y datos de eventos en Supabase. Los datos se almacenan en servidores de AWS en la región US East. <a href="https://supabase.com/privacy" style="color:var(--accent);">Política de privacidad de Supabase →</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📢 Google AdMob (anuncios)</div>
+      <p style="margin:0;font-size:14px;">Mostramos anuncios intersticiales mediante AdMob. Google puede usar el identificador de publicidad (IDFA/GAID) de tu dispositivo. Puedes optar por salir del seguimiento en la configuración de tu dispositivo. <a href="https://policies.google.com/privacy" style="color:var(--accent);">Política de privacidad de Google →</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🔐 Google Sign-In / Sign in with Apple (autenticación opcional)</div>
+      <p style="margin:0;font-size:14px;">Si decides iniciar sesión, el proceso de autenticación lo gestiona directamente Google o Apple. Nosotros solo recibimos el perfil básico que tú autorizas (nombre, email, foto). Nunca vemos tu contraseña. <a href="https://policies.google.com/privacy" style="color:var(--accent);">Google →</a> / <a href="https://www.apple.com/legal/privacy/" style="color:var(--accent);">Apple →</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">💳 Google Play Billing / App Store (suscripción)</div>
+      <p style="margin:0;font-size:14px;">Las compras in-app las gestiona Google Play o App Store según tu plataforma. No almacenamos datos de tarjetas de crédito ni información de pago. <a href="https://play.google.com/about/play-terms/" style="color:var(--accent);">Google Play →</a> / <a href="https://www.apple.com/legal/internet-services/itunes/" style="color:var(--accent);">App Store →</a></p>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section id="almacenamiento">
+    <h2><span class="num">4</span> Almacenamiento y seguridad</h2>
+    <ul>
+      <li><strong>Local:</strong> el progreso de juego se almacena en el almacenamiento interno de tu dispositivo, protegido por el sandbox de Android/iOS.</li>
+      <li><strong>Remoto:</strong> los datos de ranking y perfil se transmiten con HTTPS (TLS 1.2+) y se almacenan en Supabase con control de acceso por filas (Row Level Security).</li>
+      <li>Aplicamos las medidas de seguridad razonables del sector, aunque ningún sistema es 100% infalible.</li>
+      <li>Si cierras sesión, eliminamos tu perfil de la memoria de la app. Tus datos en el servidor permanecen para mantener la integridad del ranking; puedes solicitar la eliminación contactándonos.</li>
+    </ul>
+  </section>
+
+  <!-- 5 -->
+  <section id="menores">
+    <h2><span class="num">5</span> Menores de edad</h2>
+    <p>BTS ARMY Quiz está dirigida a usuarios mayores de <strong>13 años</strong>. No recopilamos datos personales de menores de manera consciente. Si eres padre o tutor y crees que tu hijo menor de 13 años nos ha proporcionado datos personales, contáctanos y los eliminaremos de inmediato.</p>
+    <p>En la Unión Europea, el límite puede ser de <strong>16 años</strong> según la legislación nacional. El login social es opcional y los menores pueden usar la app sin proporcionar datos personales.</p>
+  </section>
+
+  <!-- 6 -->
+  <section id="derechos">
+    <h2><span class="num">6</span> Tus derechos</h2>
+    <p>Dependiendo de tu país de residencia, puedes tener los siguientes derechos respecto a tus datos:</p>
+    <ul>
+      <li><strong>Acceso:</strong> solicitar una copia de los datos que tenemos sobre ti.</li>
+      <li><strong>Rectificación:</strong> corregir datos incorrectos o incompletos.</li>
+      <li><strong>Eliminación:</strong> solicitar que eliminemos tus datos personales del servidor.</li>
+      <li><strong>Portabilidad:</strong> recibir tus datos en formato estructurado.</li>
+      <li><strong>Oposición:</strong> oponerte al procesamiento de tus datos para ciertos fines.</li>
+    </ul>
+    <p>Para ejercer cualquiera de estos derechos, contáctanos en la dirección que aparece al final de este documento. Responderemos en un plazo máximo de 30 días.</p>
+    <p>Para eliminar tus datos locales en el dispositivo, simplemente desinstala la aplicación. Para eliminar los datos del servidor, contáctanos directamente.</p>
+  </section>
+
+  <!-- 7 -->
+  <section id="anuncios">
+    <h2><span class="num">7</span> Anuncios</h2>
+    <p>Mostramos anuncios intersticiales mediante <strong>Google AdMob</strong> para financiar el desarrollo de la app. Si adquieres la suscripción mensual (<strong>Sin anuncios</strong>), los anuncios se desactivan completamente y no se cargan datos de AdMob.</p>
+    <p>Puedes optar por salir del seguimiento personalizado en:</p>
+    <ul>
+      <li><strong>Android:</strong> Ajustes → Google → Anuncios → Inhabilitar personalización de anuncios.</li>
+      <li><strong>iOS:</strong> Ajustes → Privacidad → Rastreo → desactivar para BTS ARMY Quiz.</li>
+    </ul>
+  </section>
+
+  <!-- 8 -->
+  <section id="cambios">
+    <h2><span class="num">8</span> Cambios a esta política</h2>
+    <p>Podemos actualizar esta política de privacidad periódicamente. Cuando lo hagamos, actualizaremos la fecha de "Última actualización" en la parte superior de esta página. Si los cambios son significativos, lo notificaremos dentro de la app.</p>
+    <p>Te recomendamos revisar esta política ocasionalmente. El uso continuado de la app después de publicar cambios implica tu aceptación de la política actualizada.</p>
+  </section>
+
+  <!-- 9 -->
+  <section id="contacto">
+    <h2><span class="num">9</span> Contacto</h2>
+    <div class="contact-box">
+      <p style="margin-bottom:8px;">Si tienes preguntas sobre esta política de privacidad o quieres ejercer tus derechos, contáctanos:</p>
+      <p style="margin-bottom:4px;"><strong>boraapp — BTS ARMY Quiz</strong></p>
+      <p style="margin-bottom:0;"><a href="mailto:privacy@btsarmyquiz.app">privacy@btsarmyquiz.app</a></p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ENGLISH VERSION -->
+  <section>
+    <h2 style="font-size:24px; margin-bottom:4px;">Privacy Policy <span style="color:var(--muted); font-size:16px; font-weight:400;">(English)</span></h2>
+    <p style="color:var(--muted); font-size:13px; margin-bottom:32px;">Last updated: April 2026</p>
+
+    <p>At <strong>boraapp</strong>, we take your privacy seriously. This policy explains what data we collect, how we use it, and your rights when using <strong>BTS ARMY Quiz</strong>.</p>
+
+    <h2 style="font-size:17px;"><span class="num">1</span> Data We Collect</h2>
+    <ul>
+      <li><strong>Game progress (local only):</strong> XP, levels, streaks, achievements, and stats are stored only on your device. Not sent to servers unless you log in.</li>
+      <li><strong>Social profile (optional):</strong> If you connect Google or Apple to appear on the global ranking, we collect your name, email, profile photo (Google only), provider ID, and manually selected country.</li>
+      <li><strong>Referral code:</strong> A random code generated per installation, used for events and raffles.</li>
+      <li><strong>Advertising data:</strong> Google AdMob may collect usage data and advertising identifiers per their policy. Purchasing the no-ads subscription disables all ad loading.</li>
+    </ul>
+    <p>We do <strong>not</strong> collect location, contacts, microphone, or camera data.</p>
+
+    <h2 style="font-size:17px;"><span class="num">2</span> How We Use Your Data</h2>
+    <ul>
+      <li>Save and sync your game progress across sessions.</li>
+      <li>Display your name and score in the global ranking (login required).</li>
+      <li>Manage events, raffles, and referral tickets.</li>
+      <li>Send local push notifications (managed on-device, no external servers).</li>
+      <li>Show ads via Google AdMob (if no subscription).</li>
+    </ul>
+    <p><strong>We do not sell your data to third parties.</strong></p>
+
+    <h2 style="font-size:17px;"><span class="num">3</span> Third-Party Services</h2>
+    <ul>
+      <li><strong>Supabase</strong> — global ranking and optional profiles database. <a href="https://supabase.com/privacy" style="color:var(--accent);">Privacy policy →</a></li>
+      <li><strong>Google AdMob</strong> — interstitial ads. <a href="https://policies.google.com/privacy" style="color:var(--accent);">Privacy policy →</a></li>
+      <li><strong>Google / Apple Sign-In</strong> — optional authentication. <a href="https://policies.google.com/privacy" style="color:var(--accent);">Google →</a> / <a href="https://www.apple.com/legal/privacy/" style="color:var(--accent);">Apple →</a></li>
+      <li><strong>Google Play / App Store</strong> — in-app subscription processing.</li>
+    </ul>
+
+    <h2 style="font-size:17px;"><span class="num">4</span> Children</h2>
+    <p>The app is intended for users aged 13 and older. We do not knowingly collect personal data from children under 13. Contact us if you believe a child has provided personal data.</p>
+
+    <h2 style="font-size:17px;"><span class="num">5</span> Your Rights</h2>
+    <p>Depending on your jurisdiction, you may request access to, correction, deletion, or portability of your personal data. Contact us at <a href="mailto:privacy@btsarmyquiz.app" style="color:var(--accent);">privacy@btsarmyquiz.app</a> and we'll respond within 30 days.</p>
+
+    <h2 style="font-size:17px;"><span class="num">6</span> Contact</h2>
+    <div class="contact-box">
+      <p><strong>boraapp — BTS ARMY Quiz</strong></p>
+      <a href="mailto:privacy@btsarmyquiz.app">privacy@btsarmyquiz.app</a>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <p>💜 <span>BTS ARMY Quiz</span> · boraapp · <a href="terms.html" style="color:var(--muted);">Términos de Servicio</a></p>
+  <p style="margin-top:6px;">© 2026 boraapp. Todos los derechos reservados.</p>
+</footer>
+
+</body>
+</html>

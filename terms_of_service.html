@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Términos de Servicio — BTS ARMY Quiz</title>
+<style>
+  :root {
+    --bg: #06040C;
+    --bg2: #0F0A1E;
+    --card: #150E28;
+    --accent: #D946EF;
+    --accent2: #9333EA;
+    --text: #F1E9FF;
+    --muted: #8B7FA8;
+    --border: rgba(217,70,239,0.15);
+    --gold: #FBBF24;
+    --green: #10B981;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+  .hero {
+    background: linear-gradient(135deg, #1A0840 0%, #06040C 60%);
+    border-bottom: 1px solid var(--border);
+    padding: 60px 24px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(217,70,239,0.12) 0%, transparent 70%);
+    top: -100px; left: 50%; transform: translateX(-50%);
+    pointer-events: none;
+  }
+  .emoji { font-size: 48px; display: block; margin-bottom: 16px; }
+  h1 {
+    font-size: clamp(24px, 5vw, 36px);
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, var(--accent), #F9A8D4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 10px;
+  }
+  .subtitle { color: var(--muted); font-size: 13px; letter-spacing: 0.5px; }
+  .updated {
+    display: inline-block;
+    margin-top: 14px;
+    background: rgba(217,70,239,0.1);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 12px;
+    color: var(--accent);
+  }
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+  .toc {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 48px;
+  }
+  .toc h2 {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent);
+    margin-bottom: 14px;
+    font-weight: 700;
+  }
+  .toc ol {
+    padding-left: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 24px;
+  }
+  .toc li a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.2s;
+  }
+  .toc li a:hover { color: var(--accent); }
+  @media (max-width: 500px) { .toc ol { grid-template-columns: 1fr; } }
+  section { margin-bottom: 48px; scroll-margin-top: 24px; }
+  h2 {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  h2 .num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px; height: 28px;
+    background: linear-gradient(135deg, var(--accent2), var(--accent));
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 900;
+    color: white;
+    flex-shrink: 0;
+  }
+  p { color: #C4B5D8; margin-bottom: 12px; }
+  ul, ol { padding-left: 22px; margin-bottom: 12px; }
+  li { color: #C4B5D8; margin-bottom: 6px; }
+  strong { color: var(--text); font-weight: 700; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+  .card-title {
+    font-weight: 700;
+    color: var(--text);
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .highlight {
+    background: rgba(217,70,239,0.06);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 14px 18px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    color: #C4B5D8;
+  }
+  .warning {
+    background: rgba(251,191,36,0.06);
+    border: 1px solid rgba(251,191,36,0.2);
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    color: var(--gold);
+  }
+  .divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+  .contact-box {
+    background: linear-gradient(135deg, rgba(217,70,239,0.08), rgba(147,51,234,0.05));
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    text-align: center;
+  }
+  .contact-box a { color: var(--accent); text-decoration: none; font-weight: 600; }
+  .contact-box a:hover { text-decoration: underline; }
+  footer {
+    text-align: center;
+    padding: 32px 24px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 12px;
+  }
+  footer span { color: var(--accent); }
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <span class="emoji">📋</span>
+  <h1>Términos de Servicio</h1>
+  <p class="subtitle">BTS ARMY Quiz — boraapp</p>
+  <span class="updated">Última actualización: Abril 2026</span>
+</div>
+
+<div class="container">
+
+  <div class="highlight">
+    Al descargar, instalar o usar BTS ARMY Quiz, aceptas estos Términos de Servicio. Si no estás de acuerdo, por favor no uses la aplicación.
+  </div>
+
+  <div class="toc">
+    <h2>Contenido</h2>
+    <ol>
+      <li><a href="#descripcion">Descripción del servicio</a></li>
+      <li><a href="#cuenta">Cuenta y acceso</a></li>
+      <li><a href="#licencia">Licencia de uso</a></li>
+      <li><a href="#conducta">Conducta del usuario</a></li>
+      <li><a href="#compras">Compras y suscripción</a></li>
+      <li><a href="#propiedad">Propiedad intelectual</a></li>
+      <li><a href="#contenido">Contenido de terceros</a></li>
+      <li><a href="#limitacion">Limitación de responsabilidad</a></li>
+      <li><a href="#suspension">Suspensión y terminación</a></li>
+      <li><a href="#cambios">Cambios a los términos</a></li>
+      <li><a href="#ley">Ley aplicable</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ol>
+  </div>
+
+  <!-- 1 -->
+  <section id="descripcion">
+    <h2><span class="num">1</span> Descripción del servicio</h2>
+    <p><strong>BTS ARMY Quiz</strong> es una aplicación de entretenimiento móvil desarrollada por <strong>boraapp</strong> que permite a los fans de BTS poner a prueba sus conocimientos mediante cuestionarios, modos de juego musical y desafíos por eras. La app incluye:</p>
+    <ul>
+      <li>24 niveles de cuestionario de dificultad progresiva.</li>
+      <li>Bangtan Beat: modo de reconocimiento de canciones por fragmentos de audio.</li>
+      <li>Modo Historia: recorrido por las eras de BTS desde 2013.</li>
+      <li>Ranking global opcional.</li>
+      <li>Sistema de eventos y sorteos mediante códigos de referido.</li>
+    </ul>
+    <p>La app está disponible en <strong>9 idiomas</strong>: español, inglés, coreano, portugués (Brasil), francés, indonesio, filipino, japonés y tailandés.</p>
+  </section>
+
+  <!-- 2 -->
+  <section id="cuenta">
+    <h2><span class="num">2</span> Cuenta y acceso</h2>
+    <p>No es obligatorio crear una cuenta para usar BTS ARMY Quiz. El login con Google o Apple es <strong>completamente opcional</strong> y solo es necesario para:</p>
+    <ul>
+      <li>Aparecer en el ranking global con tu nombre y foto.</li>
+      <li>Sincronizar tu puntuación si cambias de dispositivo.</li>
+    </ul>
+    <p>Si decides iniciar sesión, eres responsable de mantener la seguridad de tu cuenta en Google o Apple. No somos responsables de accesos no autorizados derivados de compromisos de seguridad en tu cuenta del proveedor.</p>
+    <p>Puedes cerrar sesión en cualquier momento desde Ajustes. Tu progreso local permanecerá en el dispositivo.</p>
+  </section>
+
+  <!-- 3 -->
+  <section id="licencia">
+    <h2><span class="num">3</span> Licencia de uso</h2>
+    <p>Te concedemos una licencia <strong>personal, no exclusiva, no transferible, revocable y gratuita</strong> para instalar y usar BTS ARMY Quiz en dispositivos que sean de tu propiedad o que controles, únicamente para tu uso personal y no comercial, de acuerdo con estos Términos.</p>
+    <p><strong>No está permitido:</strong></p>
+    <ul>
+      <li>Copiar, modificar, distribuir o crear obras derivadas de la app.</li>
+      <li>Descompilar, desensamblar o hacer ingeniería inversa del código.</li>
+      <li>Usar la app con fines comerciales sin autorización escrita.</li>
+      <li>Eliminar avisos de derechos de autor o marcas comerciales.</li>
+      <li>Transferir la licencia a terceros.</li>
+    </ul>
+  </section>
+
+  <!-- 4 -->
+  <section id="conducta">
+    <h2><span class="num">4</span> Conducta del usuario</h2>
+    <p>Al usar BTS ARMY Quiz, te comprometes a:</p>
+    <ul>
+      <li>No usar la app para actividades ilegales o no autorizadas.</li>
+      <li>No intentar hackear, modificar o manipular el sistema de ranking o puntuaciones.</li>
+      <li>No crear cuentas falsas para manipular el sistema de referidos o eventos.</li>
+      <li>No usar bots, scripts u otros medios automatizados para jugar o acumular puntos.</li>
+      <li>No acosar, amenazar o perjudicar a otros usuarios.</li>
+      <li>No publicar o transmitir contenido difamatorio, obsceno o ilegal.</li>
+    </ul>
+    <div class="warning">
+      ⚠️ Nos reservamos el derecho de suspender o eliminar cuentas y datos de usuarios que violen estas normas, sin previo aviso y sin reembolso.
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section id="compras">
+    <h2><span class="num">5</span> Compras y suscripción</h2>
+
+    <div class="card">
+      <div class="card-title">✨ Suscripción "Sin anuncios"</div>
+      <p style="margin:0;font-size:14px;">Ofrecemos una suscripción mensual de <strong>$2.99 USD/mes</strong> (precio puede variar según región y plataforma) que elimina todos los anuncios de la app y otorga beneficios adicionales en eventos. La suscripción se renueva automáticamente cada mes a menos que la canceles al menos 24 horas antes del período de renovación.</p>
+    </div>
+
+    <h2 style="font-size:16px; margin-top:20px;"><span class="num" style="width:22px;height:22px;font-size:11px;">→</span> Renovación automática</h2>
+    <ul>
+      <li>La suscripción se carga a tu cuenta de Google Play o App Store.</li>
+      <li>Se renueva automáticamente al final de cada período a menos que la desactives.</li>
+      <li>Puedes cancelar en cualquier momento desde la configuración de tu tienda de apps; el acceso continúa hasta el final del período pagado.</li>
+      <li>No realizamos reembolsos de períodos parciales, salvo los obligatorios por ley o política de la tienda.</li>
+    </ul>
+
+    <h2 style="font-size:16px; margin-top:20px;"><span class="num" style="width:22px;height:22px;font-size:11px;">→</span> Restaurar compras</h2>
+    <p>Si cambias de dispositivo o reinstales la app, puedes recuperar tu suscripción activa usando el botón <strong>"Restaurar suscripción"</strong> en Ajustes → Sin anuncios.</p>
+
+    <h2 style="font-size:16px; margin-top:20px;"><span class="num" style="width:22px;height:22px;font-size:11px;">→</span> Precios y disponibilidad</h2>
+    <p>Los precios mostrados en la app son orientativos. El precio final puede variar según la región, impuestos locales y la política de precios de Google Play o App Store. boraapp se reserva el derecho de modificar los precios con previo aviso.</p>
+
+    <h2 style="font-size:16px; margin-top:20px;"><span class="num" style="width:22px;height:22px;font-size:11px;">→</span> Eventos y sorteos</h2>
+    <p>Los eventos de sorteo son completamente gratuitos de participar. Los tickets se obtienen mediante referidos y no tienen valor monetario. Los premios son discrecionales y están sujetos a disponibilidad. boraapp se reserva el derecho de modificar, suspender o cancelar eventos en cualquier momento.</p>
+  </section>
+
+  <!-- 6 -->
+  <section id="propiedad">
+    <h2><span class="num">6</span> Propiedad intelectual</h2>
+    <p>Todo el contenido original de BTS ARMY Quiz — incluyendo el código, diseño, gráficos, el personaje Bora, textos y la experiencia de usuario — es propiedad exclusiva de <strong>boraapp</strong> y está protegido por las leyes de propiedad intelectual aplicables.</p>
+    <p><strong>Aviso importante sobre BTS:</strong> BTS ARMY Quiz es una aplicación creada por fans (<em>fan app</em>) no oficial. No tiene afiliación, endorsement ni relación oficial con BTS, BIGHIT MUSIC, HYBE Corporation, ni ninguna de sus subsidiarias o afiliadas. Los nombres, imágenes, letras y demás elementos relacionados con BTS son propiedad de sus respectivos titulares. Las preguntas del quiz son de elaboración propia basadas en información de conocimiento público.</p>
+    <p>Si eres titular de derechos y consideras que algún contenido de la app infringe tus derechos de propiedad intelectual, contáctanos en <a href="mailto:legal@btsarmyquiz.app">legal@btsarmyquiz.app</a>.</p>
+  </section>
+
+  <!-- 7 -->
+  <section id="contenido">
+    <h2><span class="num">7</span> Contenido de terceros</h2>
+    <p>La app puede contener enlaces a sitios web o servicios de terceros. No somos responsables de:</p>
+    <ul>
+      <li>El contenido, políticas de privacidad o prácticas de sitios de terceros.</li>
+      <li>Los anuncios mostrados por Google AdMob.</li>
+      <li>El contenido de perfiles de otros usuarios en el ranking.</li>
+    </ul>
+    <p>El modo <strong>Bangtan Beat</strong> usa fragmentos de audio de canciones de BTS con fines educativos y de entretenimiento para fans, al amparo del uso legítimo. Si eres titular de derechos sobre algún fragmento y deseas que sea retirado, contáctanos.</p>
+  </section>
+
+  <!-- 8 -->
+  <section id="limitacion">
+    <h2><span class="num">8</span> Limitación de responsabilidad</h2>
+    <p>En la medida máxima permitida por la ley aplicable:</p>
+    <ul>
+      <li>La app se proporciona <strong>"tal cual"</strong> y <strong>"según disponibilidad"</strong>, sin garantías de ningún tipo, expresas o implícitas.</li>
+      <li>No garantizamos que la app esté libre de errores, sea ininterrumpida o segura al 100%.</li>
+      <li>No somos responsables de la pérdida de progreso de juego por fallos técnicos, desinstalaciones o cambios de dispositivo.</li>
+      <li>Nuestra responsabilidad total ante ti no excederá el importe que hayas pagado por la suscripción en los últimos 12 meses.</li>
+      <li>No somos responsables de daños indirectos, incidentales, especiales o consecuentes.</li>
+    </ul>
+  </section>
+
+  <!-- 9 -->
+  <section id="suspension">
+    <h2><span class="num">9</span> Suspensión y terminación</h2>
+    <p>Nos reservamos el derecho de suspender o terminar tu acceso a la app, con o sin previo aviso, si:</p>
+    <ul>
+      <li>Violas estos Términos de Servicio.</li>
+      <li>Tu conducta causa daño a otros usuarios o a la plataforma.</li>
+      <li>Lo exige la ley o una orden judicial.</li>
+    </ul>
+    <p>Puedes dejar de usar la app en cualquier momento desinstalándola. Las secciones de propiedad intelectual, limitación de responsabilidad y ley aplicable sobrevivirán a la terminación.</p>
+  </section>
+
+  <!-- 10 -->
+  <section id="cambios">
+    <h2><span class="num">10</span> Cambios a los términos</h2>
+    <p>Podemos modificar estos Términos en cualquier momento. Cuando lo hagamos, publicaremos la versión actualizada en esta página con la fecha de revisión. Si los cambios son materiales, lo notificaremos dentro de la app.</p>
+    <p>El uso continuado de la app tras la publicación de cambios implica tu aceptación de los nuevos Términos. Si no estás de acuerdo con los cambios, debes dejar de usar la app.</p>
+  </section>
+
+  <!-- 11 -->
+  <section id="ley">
+    <h2><span class="num">11</span> Ley aplicable y resolución de disputas</h2>
+    <p>Estos Términos se rigen por las leyes aplicables. Cualquier disputa se intentará resolver primero de forma amistosa. Si no es posible, se someterá a los tribunales competentes según la legislación aplicable.</p>
+    <p>Si resides en la Unión Europea, también puedes acceder a la <a href="https://ec.europa.eu/consumers/odr" target="_blank">plataforma de resolución de disputas en línea de la UE</a>.</p>
+  </section>
+
+  <!-- 12 -->
+  <section id="contacto">
+    <h2><span class="num">12</span> Contacto</h2>
+    <div class="contact-box">
+      <p style="margin-bottom:8px;">Para preguntas sobre estos Términos de Servicio:</p>
+      <p style="margin-bottom:4px;"><strong>boraapp — BTS ARMY Quiz</strong></p>
+      <p style="margin-bottom:8px;"><a href="mailto:legal@btsarmyquiz.app">legal@btsarmyquiz.app</a></p>
+      <p style="font-size:12px; color:var(--muted);">Para temas de privacidad: <a href="mailto:privacy@btsarmyquiz.app">privacy@btsarmyquiz.app</a></p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ENGLISH VERSION -->
+  <section>
+    <h2 style="font-size:24px; margin-bottom:4px;">Terms of Service <span style="color:var(--muted); font-size:16px; font-weight:400;">(English)</span></h2>
+    <p style="color:var(--muted); font-size:13px; margin-bottom:24px;">Last updated: April 2026</p>
+
+    <p>By downloading, installing or using BTS ARMY Quiz, you agree to these Terms of Service. If you disagree, please do not use the app.</p>
+
+    <h2 style="font-size:17px;"><span class="num">1</span> Service Description</h2>
+    <p>BTS ARMY Quiz is a mobile entertainment app by <strong>boraapp</strong> allowing BTS fans to test their knowledge through quizzes, music game modes and era challenges. Available in 9 languages.</p>
+
+    <h2 style="font-size:17px;"><span class="num">2</span> Account & Access</h2>
+    <p>No account is required. Google or Apple login is <strong>fully optional</strong>, only needed for the global ranking and score sync. You can sign out at any time from Settings.</p>
+
+    <h2 style="font-size:17px;"><span class="num">3</span> License</h2>
+    <p>We grant you a personal, non-exclusive, non-transferable, revocable license to use the app for personal, non-commercial purposes. Reverse engineering, modification, or commercial use is prohibited.</p>
+
+    <h2 style="font-size:17px;"><span class="num">4</span> Subscription</h2>
+    <p>We offer a <strong>monthly subscription at $2.99 USD/month</strong> that removes all ads and grants x3 tickets in events. The subscription auto-renews monthly. You can cancel anytime through your app store. No partial refunds unless required by law or platform policy.</p>
+
+    <h2 style="font-size:17px;"><span class="num">5</span> Intellectual Property</h2>
+    <p>All original content in BTS ARMY Quiz is owned by boraapp. <strong>This is an unofficial fan app.</strong> BTS ARMY Quiz is not affiliated with, endorsed by, or connected to BTS, BIGHIT MUSIC, or HYBE Corporation. BTS-related names and trademarks belong to their respective owners.</p>
+
+    <h2 style="font-size:17px;"><span class="num">6</span> Limitation of Liability</h2>
+    <p>The app is provided "as is" without warranties. We are not liable for indirect or consequential damages. Our total liability shall not exceed amounts paid by you in the past 12 months.</p>
+
+    <h2 style="font-size:17px;"><span class="num">7</span> Governing Law</h2>
+    <p>These Terms are governed by applicable law. EU users may access the <a href="https://ec.europa.eu/consumers/odr">EU online dispute resolution platform</a>.</p>
+
+    <h2 style="font-size:17px;"><span class="num">8</span> Contact</h2>
+    <div class="contact-box">
+      <p><strong>boraapp — BTS ARMY Quiz</strong></p>
+      <p><a href="mailto:legal@btsarmyquiz.app">legal@btsarmyquiz.app</a></p>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>💜 <span>BTS ARMY Quiz</span> · boraapp · <a href="privacy_policy.html" style="color:var(--muted);">Política de Privacidad</a></p>
+  <p style="margin-top:6px;">© 2026 boraapp. Todos los derechos reservados.</p>
+</footer>
+
+</body>
+</html>
