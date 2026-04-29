@@ -50,7 +50,7 @@
 <div class="card">
   <span class="emoji" id="ico">💜</span>
   <h1 id="title">BTS ARMY Quiz</h1>
-  <p id="msg">Siendo redirigido a la tienda…</p>
+  <p id="msg"></p>
   <div class="dots" id="dots">
     <span class="dot"></span>
     <span class="dot"></span>
@@ -59,13 +59,94 @@
 </div>
 
 <script>
+  const i18n = {
+    es: {
+      redirecting: 'Siendo redirigido a la tienda…',
+      mobile:      'Este enlace está diseñado para abrirse desde un teléfono Android o iPhone. Busca "BTS ARMY Quiz" en la tienda de tu dispositivo móvil.',
+      mobileTitle: 'Enlace para móvil',
+      notFound:    'El enlace que seguiste no existe.',
+      notFoundTitle: 'Página no encontrada',
+    },
+    en: {
+      redirecting: 'Redirecting to the store…',
+      mobile:      'This link is designed to be opened on an Android or iPhone. Search "BTS ARMY Quiz" on your mobile device\'s store.',
+      mobileTitle: 'Mobile link',
+      notFound:    'The link you followed does not exist.',
+      notFoundTitle: 'Page not found',
+    },
+    ko: {
+      redirecting: '스토어로 이동 중…',
+      mobile:      '이 링크는 Android 또는 iPhone에서 열도록 설계되었습니다. 모바일 기기의 스토어에서 "BTS ARMY Quiz"를 검색하세요.',
+      mobileTitle: '모바일 링크',
+      notFound:    '연결하려는 링크가 존재하지 않습니다.',
+      notFoundTitle: '페이지를 찾을 수 없음',
+    },
+    pt: {
+      redirecting: 'Redirecionando para a loja…',
+      mobile:      'Este link foi criado para ser aberto em um Android ou iPhone. Busque "BTS ARMY Quiz" na loja do seu dispositivo móvel.',
+      mobileTitle: 'Link para celular',
+      notFound:    'O link que você seguiu não existe.',
+      notFoundTitle: 'Página não encontrada',
+    },
+    fr: {
+      redirecting: 'Redirection vers la boutique…',
+      mobile:      'Ce lien est conçu pour être ouvert sur Android ou iPhone. Recherche "BTS ARMY Quiz" dans la boutique de ton appareil mobile.',
+      mobileTitle: 'Lien mobile',
+      notFound:    'Le lien que tu as suivi n\'existe pas.',
+      notFoundTitle: 'Page introuvable',
+    },
+    id: {
+      redirecting: 'Mengalihkan ke toko…',
+      mobile:      'Tautan ini dirancang untuk dibuka di Android atau iPhone. Cari "BTS ARMY Quiz" di toko perangkat mobilmu.',
+      mobileTitle: 'Tautan untuk ponsel',
+      notFound:    'Tautan yang kamu ikuti tidak ada.',
+      notFoundTitle: 'Halaman tidak ditemukan',
+    },
+    tl: {
+      redirecting: 'Inire-redirect sa tindahan…',
+      mobile:      'Ang link na ito ay para buksan sa Android o iPhone. Hanapin ang "BTS ARMY Quiz" sa tindahan ng iyong mobile device.',
+      mobileTitle: 'Link para sa mobile',
+      notFound:    'Ang link na sinundan mo ay hindi umiiral.',
+      notFoundTitle: 'Hindi nahanap ang pahina',
+    },
+    ja: {
+      redirecting: 'ストアにリダイレクト中…',
+      mobile:      'このリンクはAndroidまたはiPhoneで開くように設計されています。モバイルデバイスのストアで「BTS ARMY Quiz」を検索してください。',
+      mobileTitle: 'モバイル用リンク',
+      notFound:    'リンク先のページは存在しません。',
+      notFoundTitle: 'ページが見つかりません',
+    },
+    th: {
+      redirecting: 'กำลังเปลี่ยนเส้นทางไปยังร้านค้า…',
+      mobile:      'ลิงก์นี้ออกแบบมาเพื่อเปิดบน Android หรือ iPhone ค้นหา "BTS ARMY Quiz" ในร้านค้าของอุปกรณ์มือถือของคุณ',
+      mobileTitle: 'ลิงก์สำหรับมือถือ',
+      notFound:    'ลิงก์ที่คุณติดตามไม่มีอยู่',
+      notFoundTitle: 'ไม่พบหน้านี้',
+    },
+  };
+
+  // Detect browser language and pick best match
+  function getLang() {
+    const langs = navigator.languages || [navigator.language || 'es'];
+    for (const l of langs) {
+      const code = l.split('-')[0].toLowerCase();
+      if (i18n[code]) return code;
+    }
+    return 'es';
+  }
+
+  const t    = i18n[getLang()];
   const path = window.location.pathname;
+  const ico  = document.getElementById('ico');
+  const title = document.getElementById('title');
+  const msg  = document.getElementById('msg');
+  const dots = document.getElementById('dots');
 
   if (!path.startsWith('/r/') && !path.startsWith('/refer/')) {
-    document.getElementById('ico').textContent = '😢';
-    document.getElementById('title').textContent = 'Página no encontrada';
-    document.getElementById('msg').textContent = 'El enlace que seguiste no existe.';
-    document.getElementById('dots').style.display = 'none';
+    ico.textContent   = '😢';
+    title.textContent = t.notFoundTitle;
+    msg.textContent   = t.notFound;
+    dots.style.display = 'none';
   } else {
     const segments = path.split('/').filter(Boolean);
     const code = segments[segments.length - 1] || '';
@@ -81,14 +162,16 @@
     const isIOS     = /iphone|ipad|ipod/i.test(ua);
 
     if (isAndroid) {
+      msg.textContent = t.redirecting;
       setTimeout(() => { window.location.href = PLAY; }, 800);
     } else if (isIOS) {
+      msg.textContent = t.redirecting;
       setTimeout(() => { window.location.href = APPSTORE; }, 800);
     } else {
-      document.getElementById('ico').textContent = '🖥️';
-      document.getElementById('title').textContent = 'Enlace para móvil';
-      document.getElementById('msg').textContent = 'Este enlace está diseñado para abrirse desde un teléfono Android o iPhone. Busca "BTS ARMY Quiz" en la tienda de tu dispositivo móvil.';
-      document.getElementById('dots').style.display = 'none';
+      ico.textContent   = '🖥️';
+      title.textContent = t.mobileTitle;
+      msg.textContent   = t.mobile;
+      dots.style.display = 'none';
     }
   }
 </script>
