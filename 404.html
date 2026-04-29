@@ -59,36 +59,31 @@
 </div>
 
 <script>
-  const path = window.location.pathname; // /r/ABC12345
+  const path = window.location.pathname;
 
-  // Solo actuar si es una ruta de referido
   if (!path.startsWith('/r/') && !path.startsWith('/refer/')) {
     document.getElementById('ico').textContent = '😢';
     document.getElementById('title').textContent = 'Página no encontrada';
     document.getElementById('msg').textContent = 'El enlace que seguiste no existe.';
     document.getElementById('dots').style.display = 'none';
   } else {
-    // Extraer código del path: /r/ABC12345 → ABC12345
     const segments = path.split('/').filter(Boolean);
     const code = segments[segments.length - 1] || '';
 
-    const PACKAGE  = 'com.andoisa.btstrivia';
+    const PACKAGE = 'com.andoisa.btstrivia';
     const referrerParam = 'ref=' + encodeURIComponent(code);
     const PLAY     = 'https://play.google.com/store/apps/details?id=' + PACKAGE
                    + '&referrer=' + encodeURIComponent(referrerParam);
     const APPSTORE = 'https://apps.apple.com/app/id_PENDING';
-    const DEEP     = 'btsarmyquiz://refer?ref=' + encodeURIComponent(code);
 
     const ua        = navigator.userAgent || '';
     const isAndroid = /android/i.test(ua);
     const isIOS     = /iphone|ipad|ipod/i.test(ua);
 
     if (isAndroid) {
-      window.location.href = DEEP;
-      setTimeout(() => { window.location.href = PLAY; }, 1200);
+      setTimeout(() => { window.location.href = PLAY; }, 800);
     } else if (isIOS) {
-      window.location.href = DEEP;
-      setTimeout(() => { window.location.href = APPSTORE; }, 1200);
+      setTimeout(() => { window.location.href = APPSTORE; }, 800);
     } else {
       document.getElementById('ico').textContent = '🖥️';
       document.getElementById('title').textContent = 'Enlace para móvil';
