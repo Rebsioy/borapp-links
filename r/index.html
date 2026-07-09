@@ -61,16 +61,17 @@
 <script>
   function getCode() {
     const parts = location.pathname.split('/').filter(Boolean);
-    return parts.length >= 2 ? parts[parts.length - 1]
-         : new URLSearchParams(location.search).get('code') || '';
+    if (parts.length >= 2) return parts[parts.length - 1];
+    const q = new URLSearchParams(location.search);
+    return q.get('ref') || q.get('code') || '';
   }
 
   const code    = getCode();
-  const PACKAGE = 'com.boraapp.btsarmyquiz';
+  const PACKAGE = 'com.andoisa.btstrivia';
+  // Play Install Referrer: la app lo lee como ref=CODE (formato de app_links).
   const PLAY    = 'https://play.google.com/store/apps/details?id=' + PACKAGE
-                + '&referrer=' + encodeURIComponent(code);
+                + '&referrer=' + encodeURIComponent('ref=' + code);
   const APPSTORE = 'https://apps.apple.com/app/id_PENDING';
-  const DEEP    = 'btsarmyquiz://refer?ref=' + encodeURIComponent(code);
 
   const ua        = navigator.userAgent || '';
   const isAndroid = /android/i.test(ua);
@@ -81,16 +82,14 @@
   const dots  = document.getElementById('dots');
   const ico   = document.getElementById('ico');
 
+  // App instalada: los App Links verificados (https borapp.click/r/…) abren la
+  // app directamente sin cargar esta pagina. Si la pagina carga = no instalada
+  // → a la tienda. (No se usa esquema custom: la app declara App Links https.)
   if (isAndroid) {
-    // Intenta abrir la app si está instalada; si no, va a Play Store.
-    // El deep link falla silenciosamente si la app no está instalada
-    // y el setTimeout lleva a Play Store automáticamente.
-    window.location.href = DEEP;
-    setTimeout(() => { window.location.href = PLAY; }, 1200);
+    setTimeout(() => { window.location.href = PLAY; }, 800);
 
   } else if (isIOS) {
-    window.location.href = DEEP;
-    setTimeout(() => { window.location.href = APPSTORE; }, 1200);
+    setTimeout(() => { window.location.href = APPSTORE; }, 800);
 
   } else {
     // Escritorio u otro dispositivo no compatible
