@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bora Quiz</title>
+  <script>
+    (() => {
+      const query = new URLSearchParams(location.search);
+      const code = (query.get('ref') || query.get('code') || '').trim();
+      location.replace('/r/' + (code ? '?ref=' + encodeURIComponent(code) : ''));
+    })();
+  </script>
+</head>
+<body></body>
+</html>
