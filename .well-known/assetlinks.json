@@ -1,8 +1,13 @@
-[{
-  "relation": ["delegate_permission/common.handle_all_urls"],
-  "target": {
-    "namespace": "android_app",
-    "package_name": "com.andoisa.btstrivia",
-    "sha256_cert_fingerprints": ["FD:D2:62:1B:33:97:F2:7F:39:FE:DF:AA:14:A8:FB:3C:BB:0E:46:FD:0F:54:9C:60:A4:0E:16:11:55:A9:82:DB"]
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.andoisa.btstrivia",
+      "sha256_cert_fingerprints": [
+        "A0:BD:CE:22:66:B1:D5:9B:62:45:C3:E4:DD:C0:AD:7E:EA:18:BB:2B:41:45:FD:8E:32:90:6C:AC:76:25:CC:4C",
+        "FD:D2:62:1B:33:97:F2:7F:39:FE:DF:AA:14:A8:FB:3C:BB:0E:46:FD:0F:54:9C:60:A4:0E:16:11:55:A9:82:DB"
+      ]
+    }
   }
-}]
+]

@@ -1,179 +1,52 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BTS ARMY Quiz 💜</title>
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    background: #06040C;
-    color: #F1E9FF;
-    font-family: system-ui, sans-serif;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 24px;
-  }
-  .card { max-width: 320px; width: 100%; }
-  .emoji { font-size: 64px; margin-bottom: 24px; display: block; }
-  h1 {
-    font-size: 22px;
-    font-weight: 900;
-    margin-bottom: 12px;
-    background: linear-gradient(135deg, #D946EF, #F9A8D4);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  p { color: #8B7FA8; font-size: 14px; line-height: 1.6; }
-  .dots { margin-top: 28px; }
-  .dot {
-    display: inline-block;
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: #D946EF;
-    margin: 0 4px;
-    animation: bounce 1.2s infinite;
-  }
-  .dot:nth-child(2) { animation-delay: 0.2s; }
-  .dot:nth-child(3) { animation-delay: 0.4s; }
-  @keyframes bounce {
-    0%, 80%, 100% { transform: scale(0.6); opacity: 0.3; }
-    40% { transform: scale(1); opacity: 1; }
-  }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bora Quiz</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px; background: radial-gradient(circle at top, #2b1748, #0b0712 68%); color: #f7f2ff; font-family: system-ui, sans-serif; text-align: center; }
+    .card { width: min(380px, 100%); padding: 38px 28px; border: 1px solid rgba(179,148,255,.28); border-radius: 28px; background: rgba(24,15,42,.88); }
+    .mark { width: 68px; height: 68px; margin: 0 auto 20px; display: grid; place-items: center; border-radius: 22px; background: linear-gradient(135deg,#9b5cff,#6d28d9); }
+    .mark svg { width: 36px; height: 36px; fill: none; stroke: white; stroke-width: 1.8; }
+    h1 { margin: 0 0 10px; font: 700 30px Georgia, serif; }
+    p { margin: 0; color: #c9bddc; line-height: 1.55; }
+    a { display: none; margin-top: 24px; padding: 14px 18px; border-radius: 16px; color: white; background: linear-gradient(135deg,#9b5cff,#6d28d9); font-weight: 700; text-decoration: none; }
+  </style>
 </head>
 <body>
-<div class="card">
-  <span class="emoji" id="ico">💜</span>
-  <h1 id="title">BTS ARMY Quiz</h1>
-  <p id="msg"></p>
-  <div class="dots" id="dots">
-    <span class="dot"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
-  </div>
-</div>
-
-<script>
-  const i18n = {
-    es: {
-      redirecting: 'Siendo redirigido a la tienda…',
-      mobile:      'Este enlace está diseñado para abrirse desde un teléfono Android o iPhone. Busca "BTS ARMY Quiz" en la tienda de tu dispositivo móvil.',
-      mobileTitle: 'Enlace para móvil',
-      notFound:    'El enlace que seguiste no existe.',
-      notFoundTitle: 'Página no encontrada',
-    },
-    en: {
-      redirecting: 'Redirecting to the store…',
-      mobile:      'This link is designed to be opened on an Android or iPhone. Search "BTS ARMY Quiz" on your mobile device\'s store.',
-      mobileTitle: 'Mobile link',
-      notFound:    'The link you followed does not exist.',
-      notFoundTitle: 'Page not found',
-    },
-    ko: {
-      redirecting: '스토어로 이동 중…',
-      mobile:      '이 링크는 Android 또는 iPhone에서 열도록 설계되었습니다. 모바일 기기의 스토어에서 "BTS ARMY Quiz"를 검색하세요.',
-      mobileTitle: '모바일 링크',
-      notFound:    '연결하려는 링크가 존재하지 않습니다.',
-      notFoundTitle: '페이지를 찾을 수 없음',
-    },
-    pt: {
-      redirecting: 'Redirecionando para a loja…',
-      mobile:      'Este link foi criado para ser aberto em um Android ou iPhone. Busque "BTS ARMY Quiz" na loja do seu dispositivo móvel.',
-      mobileTitle: 'Link para celular',
-      notFound:    'O link que você seguiu não existe.',
-      notFoundTitle: 'Página não encontrada',
-    },
-    fr: {
-      redirecting: 'Redirection vers la boutique…',
-      mobile:      'Ce lien est conçu pour être ouvert sur Android ou iPhone. Recherche "BTS ARMY Quiz" dans la boutique de ton appareil mobile.',
-      mobileTitle: 'Lien mobile',
-      notFound:    'Le lien que tu as suivi n\'existe pas.',
-      notFoundTitle: 'Page introuvable',
-    },
-    id: {
-      redirecting: 'Mengalihkan ke toko…',
-      mobile:      'Tautan ini dirancang untuk dibuka di Android atau iPhone. Cari "BTS ARMY Quiz" di toko perangkat mobilmu.',
-      mobileTitle: 'Tautan untuk ponsel',
-      notFound:    'Tautan yang kamu ikuti tidak ada.',
-      notFoundTitle: 'Halaman tidak ditemukan',
-    },
-    tl: {
-      redirecting: 'Inire-redirect sa tindahan…',
-      mobile:      'Ang link na ito ay para buksan sa Android o iPhone. Hanapin ang "BTS ARMY Quiz" sa tindahan ng iyong mobile device.',
-      mobileTitle: 'Link para sa mobile',
-      notFound:    'Ang link na sinundan mo ay hindi umiiral.',
-      notFoundTitle: 'Hindi nahanap ang pahina',
-    },
-    ja: {
-      redirecting: 'ストアにリダイレクト中…',
-      mobile:      'このリンクはAndroidまたはiPhoneで開くように設計されています。モバイルデバイスのストアで「BTS ARMY Quiz」を検索してください。',
-      mobileTitle: 'モバイル用リンク',
-      notFound:    'リンク先のページは存在しません。',
-      notFoundTitle: 'ページが見つかりません',
-    },
-    th: {
-      redirecting: 'กำลังเปลี่ยนเส้นทางไปยังร้านค้า…',
-      mobile:      'ลิงก์นี้ออกแบบมาเพื่อเปิดบน Android หรือ iPhone ค้นหา "BTS ARMY Quiz" ในร้านค้าของอุปกรณ์มือถือของคุณ',
-      mobileTitle: 'ลิงก์สำหรับมือถือ',
-      notFound:    'ลิงก์ที่คุณติดตามไม่มีอยู่',
-      notFoundTitle: 'ไม่พบหน้านี้',
-    },
-  };
-
-  // Detect browser language and pick best match
-  function getLang() {
-    const langs = navigator.languages || [navigator.language || 'es'];
-    for (const l of langs) {
-      const code = l.split('-')[0].toLowerCase();
-      if (i18n[code]) return code;
-    }
-    return 'es';
-  }
-
-  const t    = i18n[getLang()];
-  const path = window.location.pathname;
-  const ico  = document.getElementById('ico');
-  const title = document.getElementById('title');
-  const msg  = document.getElementById('msg');
-  const dots = document.getElementById('dots');
-
-  if (!path.startsWith('/r/') && !path.startsWith('/refer/')) {
-    ico.textContent   = '😢';
-    title.textContent = t.notFoundTitle;
-    msg.textContent   = t.notFound;
-    dots.style.display = 'none';
-  } else {
-    const segments = path.split('/').filter(Boolean);
-    const code = segments[segments.length - 1] || '';
-
-    const PACKAGE = 'com.andoisa.btstrivia';
-    const referrerParam = 'ref=' + encodeURIComponent(code);
-    const PLAY     = 'https://play.google.com/store/apps/details?id=' + PACKAGE
-                   + '&referrer=' + encodeURIComponent(referrerParam);
-    const APPSTORE = 'https://apps.apple.com/app/id_PENDING';
-
-    const ua        = navigator.userAgent || '';
-    const isAndroid = /android/i.test(ua);
-    const isIOS     = /iphone|ipad|ipod/i.test(ua);
-
-    if (isAndroid) {
-      msg.textContent = t.redirecting;
-      setTimeout(() => { window.location.href = PLAY; }, 800);
-    } else if (isIOS) {
-      msg.textContent = t.redirecting;
-      setTimeout(() => { window.location.href = APPSTORE; }, 800);
-    } else {
-      ico.textContent   = '🖥️';
-      title.textContent = t.mobileTitle;
-      msg.textContent   = t.mobile;
-      dots.style.display = 'none';
-    }
-  }
-</script>
+  <main class="card">
+    <div class="mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M8 5v22M24 5v22M8 16l8 9 8-9M8 16l8-9 8 9"/></svg></div>
+    <h1 id="title">Bora Quiz</h1>
+    <p id="message">Abriendo la aplicación...</p>
+    <a id="store" href="#">Abrir en Google Play</a>
+  </main>
+  <script>
+    (() => {
+      const parts = location.pathname.split('/').filter(Boolean);
+      const route = parts[0] || '';
+      const query = new URLSearchParams(location.search);
+      const code = (parts[1] || query.get('ref') || query.get('code') || '').trim();
+      const title = document.getElementById('title');
+      const message = document.getElementById('message');
+      const store = document.getElementById('store');
+      if (!['r', 'refer'].includes(route) || !code) {
+        title.textContent = 'Enlace no válido';
+        message.textContent = 'Este enlace de invitación no contiene un código válido.';
+        return;
+      }
+      const play = 'https://play.google.com/store/apps/details?id=com.andoisa.btstrivia&referrer=' + encodeURIComponent('ref=' + code);
+      store.href = play;
+      store.style.display = 'block';
+      if (/android/i.test(navigator.userAgent || '')) {
+        message.textContent = 'Abriendo Bora Quiz o Google Play...';
+        setTimeout(() => { location.href = play; }, 700);
+      } else {
+        title.textContent = 'Abre este enlace en Android';
+        message.textContent = 'En Android, este enlace abre Bora Quiz y conserva tu código de invitación.';
+      }
+    })();
+  </script>
 </body>
 </html>
